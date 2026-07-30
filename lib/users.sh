@@ -14,3 +14,20 @@ check_uid_zero() {
 		echo "$uid_zero_users"
 	fi
 }
+
+check_empty_passwords() {
+	local users_empty_pass
+	local users_empty_pass_count
+	local threshold=0
+	users_empty_pass=$(awk -F: '$2=="" {print $1}' /etc/shadow)
+	users_empty_pass_count=$(awk -F: '$2=="" {print $1}' /etc/shadow | wc -l)
+
+	if [[ "$users_empty_pass_count" -eq "$threshold" ]];then
+		echo "[OK] All users has password"
+	else
+		echo "[WARNING] Found $users_empty_pass_count user(s) without a password"
+		echo
+		echo "Users without a  password:"
+		echo "$users_empty_pass"
+	fi
+}
