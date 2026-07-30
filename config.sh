@@ -7,7 +7,7 @@ VERSION="1.0.0"
 
 #Directories
 
-BASE_DIR="$(cd"$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 LOG_DIR="$BASE_DIR/logs"
 REPORT_DIR="$BASE_DIR/reports"
