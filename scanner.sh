@@ -9,6 +9,6 @@ check_permission "/etc/shadow" "$SHADOW_PERMISSION" "/etc/shadow"
 
 check_permission "/etc/group" "$GROUP_PERMISSOIN" "/etc/group"
 
-check_permisson "/etc/gshadow" "$GSHADOW_PERMISSON" "/etc/gshadow"
+check_permission "/etc/gshadow" "$GSHADOW_PERMISSON" "/etc/gshadow"
 
 check_permission "/etc/sudoers" "$SUDOERS_PERMISSION" "/etc/sudoers"
