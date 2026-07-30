@@ -3,7 +3,7 @@
 get_permission() {
 	local file_name="$1"
 
-	stat -c "%a" "$file"
+	stat -c "%a" "$file_name"
 }
 
 check_permission() {
