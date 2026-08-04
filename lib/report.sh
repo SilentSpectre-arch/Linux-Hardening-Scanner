@@ -7,3 +7,19 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 BLUE="\e[34m"
 RESET="\e[0m"
+
+ok() {
+    echo -e "${GREEN}[OK]${RESET} $1"
+}
+
+warning() {
+    echo -e "${YELLOW}[WARNING]${RESET} $1"
+}
+
+error() {
+    echo -e "${RED}[ERROR]${RESET} $1"
+}
+
+info() {
+    echo -e "${BLUE}[INFO]${RESET} $1"
+}
