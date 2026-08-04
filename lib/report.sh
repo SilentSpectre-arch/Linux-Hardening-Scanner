@@ -20,3 +20,6 @@ error() {
     echo -e "${RED}[ERROR]${RESET} $1"
 }
 
+info() {
+    echo -e "${BLUE}[INFO]${RESET} $1"
+}
