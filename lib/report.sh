@@ -15,3 +15,8 @@ ok() {
 warning() {
     echo -e "${YELLOW}[WARNING]${RESET} $1"
 }
+
+error() {
+    echo -e "${RED}[ERROR]${RESET} $1"
+}
+
