@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source lib/report.sh
+
 get_permission() {
 	local file_name="$1"
 
@@ -15,9 +17,9 @@ check_permission() {
 	current_permission=$(get_permission "$path_file")
 
 	if [[ "$current_permission" == "$expected_permission" ]];then
-		echo "[OK] $file_name permission is correct ($current_permission)"
+		ok "$file_name permission is correct ($current_permission)"
 	else
-		echo "[WARNING] $file_name permission is incorrect"
+		warning "$file_name permission is incorrect"
 		echo "Current: $current_permission"
 		echo "Expected: $expected_permission"
 	fi
