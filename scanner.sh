@@ -4,6 +4,9 @@ source config.sh
 source lib/permissions.sh
 source lib/users.sh
 source lib/sudo.sh
+source lib/report.sh
+
+print_header "Permission Checks"
 
 check_permission "/etc/passwd" "$PASSWD_PERMISSION" "/etc/passwd"
 
@@ -15,7 +18,9 @@ check_permission "/etc/gshadow" "$GSHADOW_PERMISSON" "/etc/gshadow"
 
 check_permission "/etc/sudoers" "$SUDOERS_PERMISSION" "/etc/sudoers"
 
-echo "########### User Checks ##############"
+print_separator
+
+print_header "Check Users"
 
 check_uid_zero
 
@@ -27,7 +32,9 @@ echo
 
 check_login_shells
 
-echo "####### Sudoers check ##########"
+print_separator
+
+print_header "Check Sudoers & sudoers.d"
 
 check_sudoers_permission
 
