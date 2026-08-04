@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source lib/report.sh
+
 check_sudoers_permission()
 {
     local file="/etc/sudoers"
@@ -9,9 +11,9 @@ check_sudoers_permission()
     current_permission=$(stat -c "%a" "$file")
 
     if [[ "$current_permission" -eq "$expected_permission" ]];then
-        echo "[OK] /etc/sudoers permission is correct $current_permission"
+        ok "/etc/sudoers permission is correct $current_permission"
     else
-        echo "[WARNING] /etc/sudoers permission is incorrect"
+        warning "/etc/sudoers permission is incorrect"
         echo "Current: $current_permission"
         echo "Expected: $expected_permission"
     fi
@@ -22,7 +24,7 @@ check_sudoers_d_permisson()
     local sudoers_d="/etc/sudoers.d"
 
     if [ ! -d "$sudoers_d" ];then
-        echo "[INFO] No sudoers.d directory found"
+        info "No sudoers.d directory found"
         return
     fi
 
@@ -32,11 +34,11 @@ check_sudoers_d_permisson()
         current_permission=$(stat -c "%a" "$file")
 
         if [ "$current_permission" != "440" ];then
-            echo "[WARNING] $file permission is incorrect"
+            warning "$file permission is incorrect"
             echo "Current: $current_permission"
             echo "Expected: 440"
         else
-            echo "[OK] $file permission is correct $current_permissoin"
+            ok "$file permission is correct $current_permissoin"
         fi
     done < <(find "$sudoers_d" -type f)
 }
@@ -48,9 +50,9 @@ check_nopasswd()
     nopasswd_entires=$(grep -R "NOPASSWD" /etc/sudoers /etc/sudoers.d 2>/dev/null)
 
     if [ -z "$nopasswd_entires" ];then
-        echo "[OK] No NOPASSWD entires found"
+        ok "No NOPASSWD entires found"
     else
-        echo "[WARNING] NOPASSWD entires found"
+        warning "NOPASSWD entires found"
         echo
         echo "$nopasswd_entires"
     fi
