@@ -3,6 +3,7 @@
 source config.sh
 source lib/permissions.sh
 source lib/users.sh
+source lib/sudo.sh
 
 check_permission "/etc/passwd" "$PASSWD_PERMISSION" "/etc/passwd"
 
@@ -25,3 +26,15 @@ check_empty_passwords
 echo
 
 check_login_shells
+
+echo "####### Sudoers check ##########"
+
+check_sudoers_permission
+
+echo
+
+check_sudoers_d_permisson
+
+echo
+
+check_nopasswd
