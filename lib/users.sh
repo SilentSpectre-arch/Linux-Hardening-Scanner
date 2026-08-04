@@ -33,7 +33,7 @@ check_empty_passwords() {
 }
 
 check_login_shells() {
-	local uid-min
+	local uid_min
 	local interactive_users
 	local interactive_user_count
 
