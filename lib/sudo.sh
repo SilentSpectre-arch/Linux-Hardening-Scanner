@@ -41,3 +41,17 @@ check_sudoers_d_permisson()
     done < <(find "$sudoers_d" -type f)
 }
 
+check_nopasswd()
+{
+    local nopasswd_entires
+
+    nopasswd_entires=$(grep -R "NOPASSWD" /etc/sudoers /etc/sudoers.d 2>/dev/null)
+
+    if [ -z "$nopasswd_entires" ];then
+        echo "[OK] No NOPASSWD entires found"
+    else
+        echo "[WARNING] NOPASSWD entires found"
+        echo
+        echo "$nopasswd_entires"
+    fi
+}
